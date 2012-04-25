@@ -36,5 +36,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug'
 gem 'bootstrap-sass', '2.0.0'
+
+group :development, :test do
+  if RUBY_VERSION =~ /1.9/
+    gem 'ruby-debug19'
+  else gem 'ruby-debug'
+  end
+end
