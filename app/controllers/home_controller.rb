@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 	  end
 	end
     respond_to do |format|
-      format.html # login.html.erb
+      format.html
     end
   end
 
@@ -39,3 +39,4 @@ class HomeController < ApplicationController
   	return nil
   end
 end
+
