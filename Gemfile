@@ -47,3 +47,8 @@ gem 'bootstrap-sass', '2.0.0'
 #    gem 'ruby-debug'
 #  end
 #end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
