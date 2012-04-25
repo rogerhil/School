@@ -1,0 +1,71 @@
+<%= form_for(@user) do |form| %>
+  <% if @user.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+ 
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :email %><br />
+    <%= form.text_field :email %>
+  </div>
+  <% if @user.new_record? %>
+  <div class="field">
+    <%= form.label :password %><br />
+    <%= form.password_field :password %>
+  </div>
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation %>
+  </div>
+  <% end %>
+  <% if @user.new_record? %>
+  <div class="field">
+    <input type="radio" name="type" value="admin" id="admin" <% if params[:type] == 'admin' %>checked="checked"<% end %> /> <label for="admin">Admin</label>
+    <input type="radio" name="type" value="teacher" id="teacher" <% if params[:type] == 'teacher' %>checked="checked"<% end %> /> <label for="teacher">Teacher</label>
+    <input type="radio" name="type" value="student" id="student" <% if params[:type] == 'student' %>checked="checked"<% end %> /> <label for="student">Student</label>
+  </div>
+  <% end %>
+  <div class="field" id="subjects" <% if not @user.teacher %>style="display: none;"<% end %>>
+    <%= form.label :subjects %><br />
+    <select multiple="multiple" name="subjects[]">
+      <% @subjects.each do |subject| %>
+        <% selected = false %>
+        <% if params[:subjects] %>
+          <% selected = params[:subjects].include? String(subject.id) %>
+        <% else %>
+          <% selected = @teachersubject_ids ? @teachersubject_ids.include?(subject.id) : false %>
+        <% end %>
+        <option value="<%= subject.id %>" <% if selected %>selected="selected"<% end %>><%= subject.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+var $subjects = $('#subjects');
+$('input[name=type]').click(function () {
+  if ($(this).val() == 'teacher') {
+    $subjects.slideDown();
+  } else {
+    $subjects.slideUp();
+  }
+});
+$('input[name=type]:checked').each(function () {
+  if ($(this).val() == 'teacher') {
+    $subjects.show();
+  }
+});
+</script>

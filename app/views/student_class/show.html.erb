@@ -1,0 +1,35 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="actions">
+<%= link_to 'Edit Class', edit_student_class_path(@student_class) %> |
+<%= link_to 'Back to Classes', student_classes_path %> |
+</div>
+ 
+<p>
+  <b>Name:</b>
+  <%= @student_class.name %>
+</p>
+
+<p>
+  <b>Subjects:</b>
+  <ul>
+  <% @student_class.subject_class_teacher.each do |sct| %>
+    <li>
+      <%= sct.subject.name %> - <%= sct.teacher.user.name %>
+    </li>
+  <% end %>
+  </ul>
+</p>
+
+<p>
+  <b>Students:</b>
+  <ul>
+  <% @students.each do |student| %>
+    <li>
+      <%= student.user.name %>
+    </li>
+  <% end %>
+  </ul>
+</p>

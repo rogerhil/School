@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #baab8e;">
+  <div class="container_3">
+  	<div id="header" class="grid_3">
+  	  <div class="block">
+  	      <div id="logo">
+  	  	    School
+  	      </div>
+	  	  <div id="login_actions">
+	  	  	<div class="actions">
+		  	<% if session[:user] %>
+		      <% user = User.find(session[:user]) %>
+		      <%= link_to user.name, user %> <%= link_to 'Logout', logout_url %>
+		    <% else %>
+		      <%= link_to 'Login', login_url %>
+		    <% end %>
+			</div>
+		  </div>
+		  <div class="clear"></div>
+	  </div>
+  	</div>
+	<div class="menu block">
+	  <a href="<%= root_path %>">
+        <div class="menu_item">
+      	  Home
+        </div>
+  	  </a>
+	  <a href="<%= users_path %>">
+        <div class="menu_item">
+      	  Users
+        </div>
+  	  </a>
+	  <a href="<%= subjects_path %>">
+        <div class="menu_item">
+      	  Subjects
+        </div>
+  	  </a>
+      <a href="<%= student_classes_path %>">
+        <div class="menu_item">
+      	  Classes
+        </div>
+  	  </a>
+	</div>
+    <div class="grid_3">
+      <div class="block">
+      	<%= yield %>
+      </div>
+	</div>
+	<div class="clear"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<%= form_for(@student_class) do |form| %>
+  <% if @student_class.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@student_class.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+    <% @student_class.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+ 
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </div>
+  <div class="field">
+    <%= form.label :subjects %><br />
+    <ul>
+    <% @subjects.each do |subject| %>
+      <li>
+        <% checked = false %>
+        <% if params[:subject] %>
+          <% checked = params[:subject].include? String(subject.id) %>
+        <% else %>
+          <% checked = @class_subject_ids ? @class_subject_ids.include?(subject.id) : false %>
+        <% end %>
+        <input type="checkbox" name="subject[]" value="<%= subject.id %>" id="subject_<%= subject.id %>" <% if checked %>checked="checked"<% end %> /> <label for="subject_<%= subject.id %>"><%= subject.name %></label> 
+        <% @class_subject_teacher_ids %>
+        <select name="teacher__subject_<%= subject.id %>" style="display: none;">
+          <option value="">Choose a teacher</option>
+          <% subject.teacher_subject.each do |ts| %>
+            <% if ts.teacher %>
+              <% selected = false %>
+              <% if params['teacher__subject_' + String(subject.id)] %>
+                <% selected = params['teacher__subject_' + String(subject.id)].include? String(ts.teacher.id) %>
+              <% else %>
+                <% selected = @class_subject_teacher_ids ? @class_subject_teacher_ids[subject.id] ? @class_subject_teacher_ids[subject.id].include?(ts.teacher.id) : false : false %>
+              <% end %>
+              <option value="<%= ts.teacher.id %>" <% if selected %>selected="selected"<% end %>><%= ts.teacher.user.name %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </li>
+    <% end %>
+    </ul>
+  </div>  
+
+  <div class="field">
+    <%= form.label :students %> not registered<br />
+    <select multiple name="student[]">
+    <% @students.each do |student| %>
+      <% selected = false %>
+      <% if params[:student] %>
+        <% selected = params[:student].include? String(student.id) %>
+      <% else %>
+        <% selected = student.student_class and student.student_class.id == @student_class.id %>
+      <% end %>
+      <option value="<%= student.id %>" <% if selected %>selected="selected"<% end %>><%= student.user.name %></option>
+    <% end %>
+    </select>
+  </div>  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+
+$("input[name*=subject]").click(function () {
+  var $select = $(this).parent().find('select');
+  if ($(this).is(':checked')) {
+    $select.fadeIn();
+  } else {
+    $select.fadeOut();
+    $select.val('');
+  }
+});
+
+$("input[name*=subject]").each(function () {
+  var $select = $(this).parent().find('select');
+  if ($(this).is(':checked')) {
+    $select.fadeIn();
+  } else {
+    $select.fadeOut();
+    $select.val('');
+  }
+});
+
+</script>

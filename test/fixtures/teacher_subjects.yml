@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  teacher: teacher1
+  subject: math
+
+two:
+  teacher: teacher1
+  subject: history
+
+three:
+  teacher: teacher2
+  subject: biology

@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+teacher1:
+  user: user_teacher1
+
+teacher2:
+  user: user_teacher2

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+admin:
+  name: admin
+  email: admin@admin.com
+  admin: true
+  password_hash: $2a$10$.6afxQGCEXNWnXoWsx49GOBiDGt6UH7AvkW/X83YUY5oBgfygYzua
+
+user_teacher1:
+  name: teacher 1
+  email: teacher1@teacher.com
+  password_hash: $2a$10$.6afxQGCEXNWnXoWsx49GOBiDGt6UH7AvkW/X83YUY5oBgfygYzua
+
+user_teacher2:
+  name: teacher 2
+  email: teacher2@teacher.com
+  password_hash: $2a$10$.6afxQGCEXNWnXoWsx49GOBiDGt6UH7AvkW/X83YUY5oBgfygYzua
+
+user_student1:
+  name: student 1
+  email: student1@student.com
+  password_hash: $2a$10$.6afxQGCEXNWnXoWsx49GOBiDGt6UH7AvkW/X83YUY5oBgfygYzua
+
+user_student2:
+  name: student 2
+  email: student2@student.com
+  password_hash: $2a$10$.6afxQGCEXNWnXoWsx49GOBiDGt6UH7AvkW/X83YUY5oBgfygYzua

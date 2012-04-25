@@ -1,0 +1,32 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="actions">
+	<%= link_to 'Edit User', edit_user_path(@user) %> |
+	<%= link_to 'Back to Users', users_path %> |
+</div>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+ 
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <% if @user.admin %>
+    Admin
+  <% else %>
+    <%= @user.student ? @user.student.class : '' %>
+    <%= @user.teacher ? @user.teacher.class : '' %>
+  <% end %>
+</p>
+
+<p>
+  <b>Subjects:</b> <%= @subjects.join(', ') %>
+</p>

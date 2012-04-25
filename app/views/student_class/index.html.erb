@@ -1,0 +1,49 @@
+<div class="actions">
+<%= link_to 'New Class', new_student_class_path %>
+</div>
+
+<h1>Listing Classes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Subjects</th>
+    <th>Students</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @student_classes.each do |student_class| %>
+  <tr>
+    <td><%= student_class.name %></td>
+    <td>
+     <% student_class.subject_class_teacher.each do |sct| %>
+       <%= sct.subject.name %> - <%= sct.teacher.user.name %><br/>
+     <% end %>
+    </td>
+    <td>
+     <% student_class.student.each do |student| %>
+       <%= student.user.name %><br/>
+     <% end %>
+    </td>
+    <td><div class="actions"><%= link_to 'Show', student_class %></div></td>
+    <td><div class="actions"><%= link_to 'Edit', edit_student_class_path(student_class) %></div></td>
+    <td><div class="actions"><%= link_to 'Destroy', student_class, :confirm => 'Are you sure?', :method => :delete %></div></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<div>
+  <label>Filter:</label>
+  <form action="<%= student_classes_path %>">
+  	<input type="text" name="name" value="<%= params['name'] %>" />
+    <select name="filter_by">
+      <option value="name"<% if params['filter_by'] == 'name' %>selected="selected"<% end %>>Class</option>
+      <option value="users.name" <% if params['filter_by'] == 'users.name' %>selected="selected"<% end %>>Teacher</option>
+      <option value="subjects.name" <% if params['filter_by'] == 'subjects.name' %>selected="selected"<% end %>>Subject</option>
+    </select>
+    <input type="submit" value="Filter" />
+  </form>
+</div>
+

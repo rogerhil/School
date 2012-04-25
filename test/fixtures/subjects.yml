@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+math:
+  name: Mathematics
+  description: Some description
+
+history:
+  name: History
+  description: Some description
+
+biology:
+  name: Biology
+  description: Some description

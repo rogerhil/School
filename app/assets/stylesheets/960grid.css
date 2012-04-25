@@ -1,0 +1,314 @@
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+body {
+  min-width: 960px;
+}
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_3 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+
+.grid_1,
+.grid_2,
+.grid_3 {
+	display:inline;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 10px;
+	background-color: #eee;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3 {
+	position:relative;
+}
+
+
+/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
+
+/* Grid >> 3 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_3 .grid_1 {
+	width:300px;
+}
+
+.container_3 .grid_2 {
+	width:630px;
+}
+
+.container_3 .grid_3 {
+	width:940px;
+}
+
+
+
+
+/* Prefix Extra Space >> 3 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_3 .prefix_1 {
+	padding-left:320px;
+}
+
+.container_3 .prefix_2 {
+	padding-left:640px;
+}
+
+
+
+/* Suffix Extra Space >> 3 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_3 .suffix_1 {
+	padding-right:320px;
+}
+
+.container_3 .suffix_2 {
+	padding-right:640px;
+}
+
+
+
+/* Push Space >> 3 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_3 .push_1 {
+	left:320px;
+}
+
+.container_3 .push_2 {
+	left:640px;
+}
+
+
+
+/* Pull Space >> 3 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_3 .pull_1 {
+	left:-320px;
+}
+
+.container_3 .pull_2 {
+	left:-640px;
+}
+
+
+
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+  zoom: 1;
+}
+
+div.block {
+	padding: 10px;
+	min-height: 30px;
+}
+
+#header {
+    background-color: #5d5442;
+    height: 80px;
+}
+
+div#logo {
+	color: #baab8e;
+	font-size: 50px;
+	font-weight: bold;
+	font-style: italic;
+	float: left;
+	padding: 20px 0px 0px 0px;
+}
+
+div#login_actions {
+	float: right;
+	color: #baab8e;
+}
+
+div#login_actions a {
+	color: #baab8e;
+}
+
+h1 {
+	color: #5d5442;
+}
+
+div.menu {
+	height: 30px;
+	display:inline;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+div.menu_item {
+	color: #5d5442;
+	padding: 5px 20px 5px 20px;
+	font-weight: bold;
+	font-size: 15px;
+	border-radius: 10px;
+	background-color: #eee;
+	float: left;
+	margin-right: 10px;
+}
+
+div.menu_item:hover {
+	cursor: pointer;
+	background-color: #DDD;
+}
+
+table {
+	width: 920px;
+}
+
+th {
+	background-color: #5d5442;
+	border-radius: 7px;
+	color: #eee;
+	padding: 5px;
+}
+
+td {
+	padding: 3px 10px 0px 10px;
+	border-bottom: 1px solid;
+	margin: 0px;
+}
+
+tr:hover {
+	background-color: #baab8e;
+}
+
+select[multiple] {
+	width: 200px;
+	height: 200px;
+}
+
+div.actions {
+	margin: 10px 0px 0px 10px;
+}
+
+div.actions a {
+	background-color: #344426;
+	padding: 3px 10px 3px 10px;
+	border-radius: 7px;
+	text-decoration: none;
+	color: #eee !important;
+}
+
+div.actions a:hover {
+	background-color: #222 !important;
+}
+
+#notice {
+	border-radius: 10px;
+    background-color: #dfffb3;
+    display: block;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0px !important;
+}
+
+input[type=text],
+input[type=password],
+input[type=button],
+input[type=submit] {
+	border-radius: 7px;
+	border-width: 1px;
+	height: 20px;
+	width: 300px;
+	padding: 3px 7px 3px 7px;
+}
+
+input[type=submit] {
+	height: 30px;
+	font-size: 14px;
+}
+
+input[type=submit]:hover {
+	background-color: #DDD;
+}
+
+select {
+	
+	
+}

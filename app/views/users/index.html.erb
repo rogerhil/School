@@ -1,0 +1,35 @@
+<div class="actions">
+<%= link_to 'New User', new_user_path %>
+</div>
+
+<h1>Listing Users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Type</th>
+    <th>Subjects</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.type %></td>
+    <td>
+    	<% if user.teacher %>
+    	  <%= user.teacher.teacher_subject.collect{|s| s.subject.name}.join(', ') %>
+    	<% end %>
+    </td>
+    <td><div class="actions"><%= link_to 'Show', user %></div></td>
+    <td><div class="actions"><%= link_to 'Edit', edit_user_path(user) %></div></td>
+    <td><div class="actions"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></div></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
