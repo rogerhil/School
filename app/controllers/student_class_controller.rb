@@ -15,7 +15,7 @@ class StudentClassController < ApplicationController
   def edit
     @student_class = StudentClass.find(params[:id])
     @subjects = Subject.all
-    @students = Student.where('student_class_id IS NULL OR student_class_id == ' + String(@student_class.id))
+    @students = Student.where('student_class_id = :nil or student_class_id = :scid', :nil => nil, :scid => @student_class.id)
     @class_subject_ids = @student_class.subject_class_teacher.collect{|sc| sc.subject.id}
     class_subject_teacher  = @student_class.subject_class_teacher.select(['subject_id', 'teacher_id'])
     @class_subject_teacher_ids = {}
