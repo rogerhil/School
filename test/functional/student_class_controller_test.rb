@@ -3,8 +3,8 @@ require 'test_helper'
 class StudentClassControllerTest < ActionController::TestCase
 
   setup do
-    @class = student_classes(:one)
-    @teacher = Teacher.find(1)
+    @class = student_classes(:class_a1)
+    @teacher = teachers(:teacher1)
   end
 
   test "should get index" do
@@ -22,7 +22,11 @@ class StudentClassControllerTest < ActionController::TestCase
   test "should create student_class" do
     login_as(@teacher.user.id)
     assert_difference('StudentClass.count') do
-      post :create, :student_class => { :name => 'A1' }, :subject => ['1', '2', '3'], :teacher__subject_1 => '1', :teacher__subject_2 => '1', :teacher__subject_3 => '2', :student => ['1', '2']
+      post :create, :student_class => { :name => 'A2' }, :subject => [subjects(:math).id, subjects(:history).id, subjects(:biology).id,],
+                                       "teacher__subject_" + String(subjects(:math).id) => teachers(:teacher1).id,
+                                       "teacher__subject_" + String(subjects(:history).id) => teachers(:teacher2).id,
+                                       "teacher__subject_" + String(subjects(:biology).id) => teachers(:teacher2).id,
+                                        :student => [students(:student1).id, students(:student2).id]
     end
     assert_redirected_to student_class_path(assigns(:student_class))
   end
@@ -40,7 +44,10 @@ class StudentClassControllerTest < ActionController::TestCase
 
   test "should update student_class" do
     login_as(@teacher.user.id)
-    put :update, :id => @class, :student_class => { :name => 'A2' }, :subject => ['1', '2'], :teacher__subject_1 => '1', :teacher__subject_2 => '2', :student => ['2']
+    put :update, :id => @class, :student_class => { :name => 'A2' }, :subject => [subjects(:math).id, subjects(:history).id],
+                                                  "teacher__subject_" + String(subjects(:math).id) => teachers(:teacher1).id,
+                                                  "teacher__subject_" + String(subjects(:history).id) => teachers(:teacher2).id,
+                                                  :student => [students(:student1).id]
     assert_redirected_to student_class_path(assigns(:student_class))
   end
 

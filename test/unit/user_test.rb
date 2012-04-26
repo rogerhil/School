@@ -28,9 +28,9 @@ class UserTest < ActiveSupport::TestCase
 
   def test_edit_user
     user = User.find(:all)[0]
-    assert !user.valid?, "User shouldn't be created"
+    assert user.valid?, "User shouldn't be created"
     user.name = 'Some other name'
-    assert !user.valid?, "User shouldn't be created"
+    assert user.valid?, "User shouldn't be created"
     user.email = 'otheremail@email.com'
     assert user.valid?, "User can be saved"
     assert user.save, "User saved"

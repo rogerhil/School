@@ -3,8 +3,8 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   
   setup do
-    @user = users(:one)
-    @admin = User.find(1)
+    @user = users(:admin)
+    @admin = users(:admin)
   end
 
   test "should get index" do

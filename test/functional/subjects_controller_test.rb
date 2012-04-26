@@ -3,8 +3,8 @@ require 'test_helper'
 class SubjectsControllerTest < ActionController::TestCase
 
   setup do
-    @subject = subjects(:one)
-    @teacher = Teacher.find(1)
+    @subject = subjects(:math)
+    @teacher = teachers(:teacher1)
   end
 
   test "should get index" do
@@ -54,4 +54,5 @@ class SubjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to subjects_path
   end
+
 end
