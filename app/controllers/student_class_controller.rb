@@ -122,7 +122,7 @@ class StudentClassController < ApplicationController
 
   def save_students(params, student_class)
   	sts = Student.where('student_class_id == ' + String(student_class.id))
-  	sts.update_all('student_class_id = NULL')
+  	sts.update_all(:student_class_id => nil)
     students_ids = params[:student] ? params[:student] : []
     students_ids.each do |student_id|
       student = Student.find(student_id)
