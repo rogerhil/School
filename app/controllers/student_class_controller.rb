@@ -89,7 +89,7 @@ class StudentClassController < ApplicationController
 
   def show
 	@student_class = StudentClass.find(params[:id])
-	@students = Student.where('student_class_id == ' + String(@student_class.id))
+	@students = Student.where(:student_class_id => @student_class.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @student_class }
