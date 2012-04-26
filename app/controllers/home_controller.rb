@@ -29,7 +29,7 @@ class HomeController < ApplicationController
 
   def authenticate(email, password)
   	user = User.find(:all, :conditions => ['email = ?',  email])[0]
-  	if not user:
+  	if not user
   	  return nil
   	end
 	newp = BCrypt::Password.new(user.password_hash)

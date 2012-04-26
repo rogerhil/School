@@ -75,7 +75,7 @@ class StudentClassController < ApplicationController
 
   def index
   	if params[:filter_by] and params[:name] and ['name', 'users.name', 'subjects.name'].include? params[:filter_by]
-  	  escaped_name = params[:name].gsub ('%', '\%').gsub('_', '\_')
+  	  escaped_name = params[:name].gsub('%', '\%').gsub('_', '\_')
       @student_classes = StudentClass.includes(:subject_class_teacher => [{:teacher => :user}, :subject])\
                                      .find(:all, :conditions => [ params[:filter_by] + " like ?", '%' + params[:name] + '%' ] )
   	else
